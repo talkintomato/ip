@@ -1,6 +1,9 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
+    private static ArrayList<String> todo = new ArrayList<String>();
+
     public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
@@ -19,7 +22,7 @@ public class Duke {
     private static void findCmd(String cmd) {
         switch(cmd) {
             case "list" :
-                System.out.println("list");
+                printList();
                 break;
             case "blah" :
                 System.out.println("blah");
@@ -28,7 +31,18 @@ public class Duke {
                 System.out.println("Bye. See you later! ");
                 System.exit(0);
             default:
-                System.out.println("Invalid Command! ");
+                addList(cmd);
+        }
+    }
+
+    private static void addList(String item) {
+        todo.add(item);
+        System.out.println("Added: " + item);
+    }
+
+    private static void printList() {
+        for (int i = 1; i < todo.size() + 1; i++ ) {
+            System.out.println(i + ". " + todo.get(i - 1));
         }
     }
 }
