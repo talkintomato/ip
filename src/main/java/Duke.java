@@ -1,7 +1,9 @@
+import java.util.Arrays;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class Duke {
-    private static Todo todo = new Todo();
+    private static TodoList todoList = new TodoList();
 
     public static void main(String[] args) {
         String logo = " ____        _        \n"
@@ -14,20 +16,20 @@ public class Duke {
         while (true) {
             Scanner sc = new Scanner(System.in);
             String cmd = sc.nextLine();
-            findCmd(cmd);
+            findCmd(cmd.split(" "));
         }
     }
 
-    private static void findCmd(String cmd) {
-        switch(cmd) {
+    private static void findCmd(String[] cmd) {
+        switch(cmd[0]) {
             case "list" :
-                todo.printList();
+                todoList.printList();
                 break;
             case "mark" :
-                todo.mark();
+                todoList.mark(cmd[1]);
                 break;
             case "unmark" :
-                todo.unmark();
+                todoList.unmark(cmd[1]);
                 break;
             case "blah" :
                 System.out.println("blah");
@@ -36,8 +38,9 @@ public class Duke {
                 System.out.println("Bye. See you later! ");
                 System.exit(0);
             default:
-                Task task = new Task(cmd);
-                todo.addList(task);
+                String[] refactor = String.join(" ", cmd).split("/", 2);
+                Task task = Task.createTask(refactor);
+                todoList.addList(task);
         }
     }
 }
