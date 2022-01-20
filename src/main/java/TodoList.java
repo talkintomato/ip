@@ -9,6 +9,11 @@ public class TodoList {
         System.out.println("Added: " + task.description);
     }
 
+    public void removeList(String index) throws DukeException {
+        Task task = todo.remove(Integer.parseInt(index));
+        System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todo.size() + " tasks in the list.");
+    }
+
     public void printList() {
         for (int i = 0; i < todo.size(); i++ ) {
             Task task = todo.get(i);
@@ -36,3 +41,6 @@ public class TodoList {
         }
     }
 }
+//TODO
+// 1. message when list is empty
+// 2. index out of range for cmds

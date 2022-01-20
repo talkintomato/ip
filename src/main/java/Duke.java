@@ -16,11 +16,15 @@ public class Duke {
         while (true) {
             Scanner sc = new Scanner(System.in);
             String cmd = sc.nextLine();
-            findCmd(cmd.split(" ", 2));
+            try {
+                findCmd(cmd.split(" ", 2));
+            } catch (DukeException ex) {
+                System.out.println("☹ OOPS!!! " + ex);
+            }
         }
     }
 
-    private static void findCmd(String[] cmd) {
+    private static void findCmd(String[] cmd) throws DukeException{
         switch(cmd[0]) {
             case "list" :
                 todoList.printList();
@@ -51,8 +55,11 @@ public class Duke {
                 Event event = new Event(EventDetails[0], EventDetails[1]);
                 todoList.addList(event);
                 break;
+            case "delete":
+                todoList.removeList(cmd[1]);
+                break;
             default:
-                System.out.println("Invalid Input! ");
+                throw new DukeException("I'm not sure what that means :((");
         }
     }
 }
