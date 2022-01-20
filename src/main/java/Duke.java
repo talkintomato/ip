@@ -16,7 +16,7 @@ public class Duke {
         while (true) {
             Scanner sc = new Scanner(System.in);
             String cmd = sc.nextLine();
-            findCmd(cmd.split(" "));
+            findCmd(cmd.split(" ", 2));
         }
     }
 
@@ -37,10 +37,22 @@ public class Duke {
             case "bye" :
                 System.out.println("Bye. See you later! ");
                 System.exit(0);
+            case "todo":
+                Todo todo = new Todo(cmd[1]);
+                todoList.addList(todo);
+                break;
+            case "deadline":
+                String[] deadlineDetails =  cmd[1].split("/", 2);
+                Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
+                todoList.addList(deadline);
+                break;
+            case "event":
+                String[] EventDetails =  cmd[1].split("/", 2);
+                Event event = new Event(EventDetails[0], EventDetails[1]);
+                todoList.addList(event);
+                break;
             default:
-                String[] refactor = String.join(" ", cmd).split("/", 2);
-                Task task = Task.createTask(refactor);
-                todoList.addList(task);
+                System.out.println("Invalid Input! ");
         }
     }
 }
