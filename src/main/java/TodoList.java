@@ -15,6 +15,9 @@ public class TodoList {
     }
 
     public void printList() {
+        if (todo.size() == 0) {
+            System.out.println("There are no items in your Todo List!");
+        }
         for (int i = 0; i < todo.size(); i++ ) {
             Task task = todo.get(i);
             System.out.println(task);
@@ -41,6 +44,3 @@ public class TodoList {
         }
     }
 }
-//TODO
-// 1. message when list is empty
-// 2. index out of range for cmds

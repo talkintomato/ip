@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Duke {
     private static TodoList todoList = new TodoList();
 
-    public static void main(String[] args) {
+        public static void main(String[] args) {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"
                 + "| | | | | | | |/ / _ \\\n"
@@ -35,31 +35,62 @@ public class Duke {
             case "unmark" :
                 todoList.unmark(cmd[1]);
                 break;
-            case "blah" :
-                System.out.println("blah");
-                break;
-            case "bye" :
-                System.out.println("Bye. See you later! ");
-                System.exit(0);
+            //Event creation
             case "todo":
-                Todo todo = new Todo(cmd[1]);
-                todoList.addList(todo);
+                createTodo(cmd);
                 break;
             case "deadline":
-                String[] deadlineDetails =  cmd[1].split("/", 2);
-                Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
-                todoList.addList(deadline);
+                createDeadline(cmd);
                 break;
             case "event":
-                String[] EventDetails =  cmd[1].split("/", 2);
-                Event event = new Event(EventDetails[0], EventDetails[1]);
-                todoList.addList(event);
+                createEvent(cmd);
                 break;
             case "delete":
                 todoList.removeList(cmd[1]);
                 break;
+
+            case "bye" :
+                System.out.println("Bye. See you later! ");
+                System.exit(0);
             default:
                 throw new DukeException("I'm not sure what that means :((");
+        }
+    }
+
+    private static void createTodo(String[] cmd) throws DukeException {
+        if (cmd.length == 2) {
+            Todo todo = new Todo(cmd[1]);
+            todoList.addList(todo);
+        } else {
+            throw new DukeException("The description of a todo cannot be empty.");
+        }
+    }
+
+    private static void createDeadline(String[] cmd) throws DukeException {
+        if (cmd.length == 2) {
+            String[] deadlineDetails = cmd[1].split("/", 2);
+            if (deadlineDetails.length == 2) {
+                Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
+                todoList.addList(deadline);
+            } else {
+                throw new DukeException("Please indicate a time for the Deadline!");
+            }
+        } else {
+            throw new DukeException("The description of a Deadline cannot be empty.");
+        }
+    }
+
+    private static void createEvent(String[] cmd) throws DukeException {
+        if (cmd.length == 2) {
+            String[] EventDetails = cmd[1].split("/", 2);
+            if (EventDetails.length == 2) {
+                Event event = new Event(EventDetails[0], EventDetails[1]);
+                todoList.addList(event);
+            } else {
+                throw new DukeException("Please indicate a time for the Event!");
+            }
+        } else {
+            throw new DukeException("The description of a Event cannot be empty.");
         }
     }
 }
