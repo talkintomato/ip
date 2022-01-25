@@ -11,10 +11,10 @@ public class Duke {
                 + "| | | | | | | |/ / _ \\\n"
                 + "| |_| | |_| |   <  __/\n"
                 + "|____/ \\__,_|_|\\_\\___|\n";
-        System.out.println("Hello from\n" + logo + "\n what is your command?");
+        System.out.println("Hello from\n" + logo + "\nwhat is your command?");
+        Scanner sc = new Scanner(System.in);
 
-        while (true) {
-            Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
             String cmd = sc.nextLine();
             try {
                 findCmd(cmd.split(" ", 2));
@@ -50,7 +50,7 @@ public class Duke {
                 break;
 
             case "bye" :
-                System.out.println("Bye. See you later! ");
+                System.out.println("Bye. See you later!");
                 System.exit(0);
             default:
                 throw new DukeException("I'm not sure what that means :((");
@@ -68,7 +68,7 @@ public class Duke {
 
     private static void createDeadline(String[] cmd) throws DukeException {
         if (cmd.length == 2) {
-            String[] deadlineDetails = cmd[1].split("/", 2);
+            String[] deadlineDetails = cmd[1].split(" /by", 2);
             if (deadlineDetails.length == 2) {
                 Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
                 todoList.addList(deadline);
@@ -82,7 +82,7 @@ public class Duke {
 
     private static void createEvent(String[] cmd) throws DukeException {
         if (cmd.length == 2) {
-            String[] EventDetails = cmd[1].split("/", 2);
+            String[] EventDetails = cmd[1].split(" /at", 2);
             if (EventDetails.length == 2) {
                 Event event = new Event(EventDetails[0], EventDetails[1]);
                 todoList.addList(event);
