@@ -48,7 +48,6 @@ public class Duke {
             case "delete":
                 todoList.removeList(cmd[1]);
                 break;
-
             case "bye" :
                 System.out.println("Bye. See you later!");
                 System.exit(0);
@@ -68,7 +67,7 @@ public class Duke {
 
     private static void createDeadline(String[] cmd) throws DukeException {
         if (cmd.length == 2) {
-            String[] deadlineDetails = cmd[1].split(" /by", 2);
+            String[] deadlineDetails = cmd[1].split(" /by ", 2);
             if (deadlineDetails.length == 2) {
                 Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
                 todoList.addList(deadline);
@@ -82,7 +81,7 @@ public class Duke {
 
     private static void createEvent(String[] cmd) throws DukeException {
         if (cmd.length == 2) {
-            String[] EventDetails = cmd[1].split(" /at", 2);
+            String[] EventDetails = cmd[1].split(" /at ", 2);
             if (EventDetails.length == 2) {
                 Event event = new Event(EventDetails[0], EventDetails[1]);
                 todoList.addList(event);

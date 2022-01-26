@@ -1,14 +1,31 @@
 public class Event extends Task{
-    protected String on;
+    protected String time;
 
-    public Event(String description, String on) {
+    private String initial  = "E";
+
+    public Event(String description, String time) {
         super(description);
-        this.on = on;
+        this.time = time;
+    }
+
+    public String getInitial() {
+        return initial;
+    }
+
+    public String getTime() {return this.time;}
+
+
+    public Event(String done, String description, String time) {
+        super(description);
+        this.time = time;
+        if (done.equals("true")) {
+            this.done();
+        }
     }
 
 
     @Override
     public String toString() {
-        return "[E]" + super.toString() + " (at:" + on + ")";
+        return "[" + initial + "]" + super.toString() + " (at: " + time + ")";
     }
 }

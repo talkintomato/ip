@@ -1,15 +1,30 @@
 public class Deadline extends Task {
 
-    protected String by;
+    private String initial = "D";
+    protected String time;
 
-    public Deadline(String description, String by) {
+    public Deadline(String description, String time) {
         super(description);
-        this.by = by;
+        this.time = time;
     }
 
+    public String getInitial() {
+        return initial;
+    }
+
+    public String getTime() {return this.time;}
+
+
+    public Deadline(String done, String description, String time) {
+        super(description);
+        this.time = time;
+        if (done.equals("true")) {
+            this.done();
+        }
+    }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by:" + by + ")";
+        return "[" + initial + "]" + super.toString() + " (by: " + time + ")";
     }
 }
