@@ -1,3 +1,4 @@
+import java.time.format.DateTimeParseException;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -70,13 +71,17 @@ public class Duke {
         if (cmd.length == 2) {
             String[] deadlineDetails = cmd[1].split(" /by ", 2);
             if (deadlineDetails.length == 2) {
-                Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
-                todoList.addList(deadline);
+                try {
+                    Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
+                    todoList.addList(deadline);
+                } catch (DateTimeParseException e) {
+                    System.out.println(e.getMessage() + "\nPlease input deadline in yyyy-mm-dd");
+                }
             } else {
                 throw new DukeException("Please indicate a time for the Deadline!");
             }
         } else {
-            throw new DukeException("The description of a Deadline cannot be empty.");
+            throw new DukeException("The description of a Deadline date cannot be empty.");
         }
     }
 
@@ -84,8 +89,12 @@ public class Duke {
         if (cmd.length == 2) {
             String[] EventDetails = cmd[1].split(" /at ", 2);
             if (EventDetails.length == 2) {
-                Event event = new Event(EventDetails[0], EventDetails[1]);
-                todoList.addList(event);
+                try {
+                    Event event = new Event(EventDetails[0], EventDetails[1]);
+                    todoList.addList(event);
+                } catch (DateTimeParseException e) {
+                    System.out.println(e.getMessage() + "\nPlease input Event date in yyyy-mm-dd");
+                }
             } else {
                 throw new DukeException("Please indicate a time for the Event!");
             }
