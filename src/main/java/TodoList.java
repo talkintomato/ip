@@ -47,9 +47,13 @@ public class TodoList {
      * @throws DukeException
      */
     public void removeList(String index) throws DukeException {
-        Task task = todo.remove(Integer.parseInt(index));
-        this.saveList();
-        System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todo.size() + " tasks in the list.");
+        if (Integer.parseInt(index) < todo.size()) {
+            Task task = todo.remove(Integer.parseInt(index));
+            this.saveList();
+            System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todo.size() + " tasks in the list.");
+        } else {
+            throw new DukeException("Index out of range!!");
+        }
     }
 
     /**
@@ -118,7 +122,6 @@ public class TodoList {
                 else throw new DukeException("Unknown Task");
             }
             myWriter.close();
-            System.out.println("Successfully wrote to the file.");
         } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
