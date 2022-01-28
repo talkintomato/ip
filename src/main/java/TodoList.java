@@ -10,8 +10,12 @@ public class TodoList {
     }
 
     public void removeList(String index) throws DukeException {
-        Task task = todo.remove(Integer.parseInt(index));
-        System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todo.size() + " tasks in the list.");
+        if (Integer.parseInt(index) < todo.size()) {
+            Task task = todo.remove(Integer.parseInt(index));
+            System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todo.size() + " tasks in the list.");
+        } else {
+            throw new DukeException("Index out of range!!");
+        }
     }
 
     public void printList() {
