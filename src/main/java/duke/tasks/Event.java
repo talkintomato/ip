@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class Event extends Task{
 
     private LocalDate time;
-    private String initial  = "E";
+    private static String INITIAL  = "E";
 
     public Event(String description, String time) {
         super(description);
@@ -14,15 +14,13 @@ public class Event extends Task{
         this.time = date;
     }
 
-    public String getInitial() {
-        return initial;
+    public static String getInitial() {
+        return INITIAL;
     }
 
     public String getTime() {return this.time.toString();}
 
     public String getFormattedTime() {return time.format(DateTimeFormatter.ofPattern("MMM d yyyy"));}
-
-
 
     public Event(String done, String description, String time) {
         super(description);
@@ -35,7 +33,7 @@ public class Event extends Task{
 
     @Override
     public String toString() {
-        return "[" + initial + "]" + super.toString() + " (at: " + getFormattedTime() + ")";
+        return "[" + getInitial() + "]" + super.toString() + " (at: " + getFormattedTime() + ")";
     }
 
 }

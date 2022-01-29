@@ -21,7 +21,7 @@ public class TaskList {
      * Adds a Task to the List
      * @param task task that has been created
      */
-    public void addList(Task task) {
+    public void addTask(Task task) {
         todos.add(task);
         System.out.println("Added: " + task.getDescription());
     }
@@ -32,7 +32,7 @@ public class TaskList {
      * @param index Index of task in the list
      * @throws DukeException
      */
-    public void removeList(String index) throws DukeException {
+    public void removeTask(String index) throws DukeException {
         if (Integer.parseInt(index) < todos.size()) {
             Task task = todos.remove(Integer.parseInt(index));
             System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todos.size() + " tasks in the list.");

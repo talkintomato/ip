@@ -36,7 +36,7 @@ public class Command {
                 createEvent(cmd, taskList);
                 break;
             case "delete":
-                taskList.removeList(cmd[1]);
+                taskList.removeTask(cmd[1]);
                 break;
             case "bye" :
                 isExit = true;
@@ -54,7 +54,7 @@ public class Command {
     private void createTodo(String[] cmd, TaskList taskList) throws DukeException {
         if (cmd.length == 2) {
             Todo todo = new Todo(cmd[1]);
-            taskList.addList(todo);
+            taskList.addTask(todo);
         } else {
             throw new DukeException("The description of a todo cannot be empty.");
         }
@@ -66,7 +66,7 @@ public class Command {
             if (deadlineDetails.length == 2) {
                 try {
                     Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
-                    taskList.addList(deadline);
+                    taskList.addTask(deadline);
                 } catch (DateTimeParseException e) {
                     System.out.println(e.getMessage() + "\nPlease input deadline in yyyy-mm-dd");
                 }
@@ -84,7 +84,7 @@ public class Command {
             if (EventDetails.length == 2) {
                 try {
                     Event event = new Event(EventDetails[0], EventDetails[1]);
-                    taskList.addList(event);
+                    taskList.addTask(event);
                 } catch (DateTimeParseException e) {
                     System.out.println(e.getMessage() + "\nPlease input Event date in yyyy-mm-dd");
                 }

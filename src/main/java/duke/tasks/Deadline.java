@@ -5,11 +5,11 @@ import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
 
-    private String initial = "D";
+    private final static String INITIAL = "D";
     protected LocalDate time;
 
-    public String getInitial() {
-        return initial;
+    public static String getInitial() {
+        return INITIAL;
     }
 
     public String getTime() {return this.time.toString();}
@@ -33,6 +33,6 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return "[" + initial + "]" + super.toString() + " (by: " + getFormattedTime() + ")";
+        return "[" + getInitial() + "]" + super.toString() + " (by: " + getFormattedTime() + ")";
     }
 }

@@ -7,6 +7,7 @@ public abstract class Task {
     protected boolean isDone;
 
 
+
     public Task(String description) {
         this.description = description;
         this.isDone = false;
@@ -44,5 +45,4 @@ public abstract class Task {
 
     public String getDescription() {return this.description;}
 
-    abstract public String getInitial();
 }

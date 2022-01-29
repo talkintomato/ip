@@ -3,21 +3,21 @@ package duke.tasks;
 public class Todo extends Task {
 
 
-    private String initial  = "T";
+    private final static String INITIAL  = "T";
 
     public Todo(String description) {
         super(description);
     }
 
-    public Todo(String done, String description) {
+    public Todo(String isDone, String description) {
         super(description);
-        if (done.equals("true")) {
+        if (isDone.equals("true")) {
             this.done();
         }
     }
 
-    public String getInitial() {
-        return initial;
+    public static String getInitial() {
+        return INITIAL;
     }
 
     public String getTime() {return null;}
@@ -28,6 +28,6 @@ public class Todo extends Task {
 
     @Override
     public String toString() {
-        return "[" + initial + "]" + super.toString() ;
+        return "[" + getInitial() + "]" + super.toString() ;
     }
 }
