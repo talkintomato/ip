@@ -1,4 +1,8 @@
-abstract class Task {
+package duke.tasks;
+
+import duke.exception.DukeException;
+
+public abstract class Task {
     protected String description;
     protected boolean isDone;
 
@@ -21,7 +25,7 @@ abstract class Task {
         isDone = false;
     }
 
-    public static Task createTask(String[] description) throws DukeException{
+    public static Task createTask(String[] description) throws DukeException {
         switch (description[0]) {
             case "T":
                 return new Todo(description[1], description[2]);

@@ -1,9 +1,9 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
+package duke;
+
+import duke.exception.DukeException;
+import duke.tasks.Task;
 import java.util.ArrayList;
-import java.io.IOException;
-import java.util.Scanner;
+
 
 public class TaskList {
     protected ArrayList<Task> todos = new ArrayList<>();
@@ -23,7 +23,7 @@ public class TaskList {
      */
     public void addList(Task task) {
         todos.add(task);
-        System.out.println("Added: " + task.description);
+        System.out.println("Added: " + task.getDescription());
     }
 
 
@@ -60,7 +60,7 @@ public class TaskList {
      */
     public void mark(String index) {
         Task task = todos.get(Integer.parseInt(index));
-        if (task.isDone) {
+        if (task.getIsDone()) {
             System.out.println("Task already completed!");
         } else {
             task.done();
@@ -74,7 +74,7 @@ public class TaskList {
      */
     public void unmark(String index) {
         Task task = todos.get(Integer.parseInt(index));
-        if (!task.isDone) {
+        if (!task.getIsDone()) {
             System.out.println("Task not yet completed!");
         } else {
             task.notDone();
