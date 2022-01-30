@@ -17,7 +17,7 @@ public class Command {
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         switch(cmd[0]) {
             case "list" :
-                taskList.printList();
+                ui.printList(taskList.getList());
                 break;
             case "mark" :
                 taskList.mark(cmd[1]);
@@ -25,15 +25,18 @@ public class Command {
             case "unmark" :
                 taskList.unmark(cmd[1]);
                 break;
+            case "find" :
+                ui.showSearchResults(taskList.searchKeyword(cmd[1]));
+                break;
             //Event creation
             case "todo":
-                createTodo(cmd, taskList);
+                createTodo(cmd, taskList, ui);
                 break;
             case "deadline":
-                createDeadline(cmd, taskList);
+                createDeadline(cmd, taskList, ui);
                 break;
             case "event":
-                createEvent(cmd, taskList);
+                createEvent(cmd, taskList, ui);
                 break;
             case "delete":
                 taskList.removeTask(cmd[1]);
@@ -51,22 +54,24 @@ public class Command {
         return isExit;
     }
 
-    private void createTodo(String[] cmd, TaskList taskList) throws DukeException {
+    private void createTodo(String[] cmd, TaskList taskList, Ui ui) throws DukeException {
         if (cmd.length == 2) {
             Todo todo = new Todo(cmd[1]);
             taskList.addTask(todo);
+            ui.showTaskAdded(todo);
         } else {
             throw new DukeException("The description of a todo cannot be empty.");
         }
     }
 
-    private void createDeadline(String[] cmd, TaskList taskList) throws DukeException {
+    private void createDeadline(String[] cmd, TaskList taskList, Ui ui) throws DukeException {
         if (cmd.length == 2) {
             String[] deadlineDetails = cmd[1].split(" /by ", 2);
             if (deadlineDetails.length == 2) {
                 try {
                     Deadline deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
                     taskList.addTask(deadline);
+                    ui.showTaskAdded(deadline);
                 } catch (DateTimeParseException e) {
                     System.out.println(e.getMessage() + "\nPlease input deadline in yyyy-mm-dd");
                 }
@@ -78,13 +83,14 @@ public class Command {
         }
     }
 
-    private void createEvent(String[] cmd, TaskList taskList) throws DukeException {
+    private void createEvent(String[] cmd, TaskList taskList, Ui ui) throws DukeException {
         if (cmd.length == 2) {
             String[] EventDetails = cmd[1].split(" /at ", 2);
             if (EventDetails.length == 2) {
                 try {
                     Event event = new Event(EventDetails[0], EventDetails[1]);
                     taskList.addTask(event);
+                    ui.showTaskAdded(event);
                 } catch (DateTimeParseException e) {
                     System.out.println(e.getMessage() + "\nPlease input Event date in yyyy-mm-dd");
                 }

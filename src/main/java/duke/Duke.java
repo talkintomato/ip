@@ -29,7 +29,7 @@ public class Duke {
             try {
                 String fullCommand = ui.readCommand();
                 ui.showLine(); // show the divider line ("_______")
-                Command c = Parser.parse(fullCommand);
+                Command c = Parser.commandParse(fullCommand);
                 c.execute(taskList, ui, storage);
                 isExit = c.getExitStatus();
             } catch (DukeException e) {

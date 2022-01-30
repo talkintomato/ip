@@ -2,7 +2,6 @@ package duke.tasks;
 
 public class Todo extends Task {
 
-
     private final static String INITIAL  = "T";
 
     public Todo(String description) {

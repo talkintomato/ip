@@ -1,5 +1,7 @@
 package duke;
+import duke.tasks.Task;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
@@ -30,4 +32,22 @@ public class Ui {
     public void showExitMessage() {
         System.out.println("Bye. See you later!");
     }
+
+    public void showTaskAdded(Task task) {System.out.println("Added: " + task.getDescription());}
+
+    public void showSearchResults(ArrayList<Task> tasks) {
+        for (Task task : tasks) {
+            System.out.println(task);
+        }
+    }
+
+    public void printList(ArrayList<Task> tasks) {
+        if (tasks.size() == 0) {
+            System.out.println("There are no items in your Todo List!");
+        }
+        for (int i = 0; i < tasks.size(); i = i + 1) {
+            System.out.println(String.valueOf(i + 1)+ ". " + tasks.get(i));
+        }
+    }
+
 }
