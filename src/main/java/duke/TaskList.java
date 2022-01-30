@@ -3,17 +3,22 @@ package duke;
 import duke.exception.DukeException;
 import duke.tasks.Task;
 import java.util.ArrayList;
+import java.util.Hashtable;
 
 
 public class TaskList {
 
-    private ArrayList<Task> todos = new ArrayList<>();
+    private ArrayList<Task> tasks = new ArrayList<>();
+    private Hashtable<String, ArrayList<Task>> keywordHt = new Hashtable<>();
 
     /**
      * Contructor for TodoList. Loads previous save state.
      */
-    public TaskList(ArrayList<Task> todos) {
-        this.todos = todos;
+    public TaskList(ArrayList<Task> tasks) {
+        this.tasks = tasks;
+        for (Task task : tasks) {
+            addTaskToHt(task);
+        }
     }
 
     public TaskList() {}
@@ -23,8 +28,38 @@ public class TaskList {
      * @param task task that has been created
      */
     public void addTask(Task task) {
-        todos.add(task);
-        System.out.println("Added: " + task.getDescription());
+        tasks.add(task);
+        addTaskToHt(task);
+    }
+
+    private void addTaskToHt(Task task) {
+        String[] keywords = Parser.parseHashtable(task.getDescription());
+        for (String keyword : keywords) {
+            if (keywordHt.containsKey(keyword)) {
+                ArrayList<Task> valueList = keywordHt.get(keyword);
+                valueList.add(task);
+            } else {
+                ArrayList<Task> valueList = new ArrayList<>();
+                valueList.add(task);
+                keywordHt.put(keyword, valueList);
+            }
+        }
+    }
+
+    private void removeTaskFromHt(Task task) {
+        String[] keywords = Parser.parseHashtable(task.getDescription());
+        for (String keyword : keywords) {
+            ArrayList<Task> valueList = keywordHt.get(keyword);
+            valueList.remove(task);
+        }
+    }
+
+    public ArrayList<Task> searchKeyword(String keyword) throws DukeException {
+        if (keywordHt.containsKey(keyword)) {
+            return keywordHt.get(keyword);
+        } else {
+            throw new DukeException("No Search Results found");
+        }
     }
 
 
@@ -34,26 +69,22 @@ public class TaskList {
      * @throws DukeException
      */
     public void removeTask(String index) throws DukeException {
-        if (Integer.parseInt(index) < todos.size()) {
-            Task task = todos.remove(Integer.parseInt(index));
-            System.out.println("Noted. I've removed this task: \n" + task
-                    + " you now have " + todos.size() + " tasks in the list.");
+
+        if (Integer.parseInt(index) - 1 < tasks.size()) {
+            Task task = tasks.remove(Integer.parseInt(index) - 1);
+            removeTaskFromHt(task);
+            System.out.println("Noted. I've removed this task: \n" + task + " you now have "
+                    + tasks.size() + " tasks in the list.");
         } else {
             throw new DukeException("Index out of range!!");
         }
     }
 
     /**
-     * Prints all tasks in the todosList
+     * gets all tasks in the todosList
      */
-    public void printList() {
-        if (todos.size() == 0) {
-            System.out.println("There are no items in your Todo List!");
-        }
-        for (int i = 0; i < todos.size(); i++ ) {
-            Task task = todos.get(i);
-            System.out.println(task);
-        }
+    public ArrayList<Task> getList() {
+        return tasks;
     }
 
     /**
@@ -61,7 +92,7 @@ public class TaskList {
      * @param index Index of Task to be unmarked as completed
      */
     public void mark(String index) {
-        Task task = todos.get(Integer.parseInt(index));
+        Task task = tasks.get(Integer.parseInt(index));
         if (task.getIsDone()) {
             System.out.println("Task already completed!");
         } else {
@@ -75,7 +106,7 @@ public class TaskList {
      * @param index Index of Task to be unmarked
      */
     public void unmark(String index) {
-        Task task = todos.get(Integer.parseInt(index));
+        Task task = tasks.get(Integer.parseInt(index));
         if (!task.getIsDone()) {
             System.out.println("Task not yet completed!");
         } else {

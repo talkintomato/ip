@@ -2,8 +2,13 @@ package duke;
 
 public class Parser {
 
-    public static Command parse(String cmd) {
+
+    public static Command parseCommand(String cmd) {
         return new Command(cmd.split(" ", 2));
+    }
+
+    public static String[] parseHashtable(String cmd) {
+        return cmd.split(" " );
     }
 
 }
