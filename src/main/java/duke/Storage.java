@@ -15,6 +15,11 @@ public class Storage {
     protected ArrayList<Task> todos = new ArrayList<>();
     private String filepath;
 
+    /**
+     * Constructor for Storage
+     *
+     * @param filepath the path of the file to be written to and loaded from
+     */
     public Storage(String filepath) {
         this.filepath = filepath;
         try {
@@ -34,12 +39,16 @@ public class Storage {
         }
     }
 
+    /**
+     * Loaded the Task List from the saved file
+     * @return the Task List from the saved file
+     */
     public ArrayList<Task> load() {
         return todos;
     }
 
     /**
-     * save a task to the drive
+     * Save the current List to a file
      */
     public void saveList() {
         try {

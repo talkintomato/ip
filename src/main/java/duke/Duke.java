@@ -7,10 +7,14 @@ public class Duke {
     private Storage storage;
     private Ui ui;
 
-        public static void main(String[] args) {
+    public static void main(String[] args) {
         new Duke("./src/data/duke.txt").run();
     }
 
+    /**
+     * Constructor for class
+     * @param filePath The path which to save and load taskList state from
+     */
     public Duke(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -22,6 +26,9 @@ public class Duke {
         }
     }
 
+    /**
+     *  Starts running Duke
+     */
     public void run() {
         ui.launch();
         boolean isExit = false;

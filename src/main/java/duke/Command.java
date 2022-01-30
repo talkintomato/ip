@@ -14,6 +14,13 @@ public class Command {
         this.cmd = cmd;
     }
 
+    /**
+     * Determines the Nature of the command to be executed
+     * @param taskList the TaskList which is active
+     * @param ui the user interface
+     * @param storage The object used to write and save state of Tasklist
+     * @throws DukeException
+     */
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         switch(cmd[0]) {
             case "list" :
@@ -51,6 +58,12 @@ public class Command {
         return isExit;
     }
 
+    /**
+     * Creates a todo and adds it to TaskList
+     * @param cmd The parameters of the todo to be created
+     * @param taskList the TaskList which is active
+     * @throws DukeException
+     */
     private void createTodo(String[] cmd, TaskList taskList) throws DukeException {
         if (cmd.length == 2) {
             Todo todo = new Todo(cmd[1]);
@@ -60,6 +73,12 @@ public class Command {
         }
     }
 
+    /**
+     * Creates a Deadline and adds it to TaskList
+     * @param cmd The parameters of the deadline to be created
+     * @param taskList the TaskList which is active
+     * @throws DukeException
+     */
     private void createDeadline(String[] cmd, TaskList taskList) throws DukeException {
         if (cmd.length == 2) {
             String[] deadlineDetails = cmd[1].split(" /by ", 2);
@@ -78,6 +97,12 @@ public class Command {
         }
     }
 
+    /**
+     * Creates a event and adds it to TaskList
+     * @param cmd The parameters of the event to be created
+     * @param taskList the TaskList which is active
+     * @throws DukeException
+     */
     private void createEvent(String[] cmd, TaskList taskList) throws DukeException {
         if (cmd.length == 2) {
             String[] EventDetails = cmd[1].split(" /at ", 2);

@@ -3,10 +3,9 @@ package duke.tasks;
 import duke.exception.DukeException;
 
 public abstract class Task {
+
     protected String description;
     protected boolean isDone;
-
-
 
     public Task(String description) {
         this.description = description;
@@ -26,6 +25,12 @@ public abstract class Task {
         isDone = false;
     }
 
+    /**
+     * Determines which kind of task is to created based on the Initial given
+     * @param description The parameters of the task
+     * @return The type of Task to be created
+     * @throws DukeException
+     */
     public static Task createTask(String[] description) throws DukeException {
         switch (description[0]) {
             case "T":
