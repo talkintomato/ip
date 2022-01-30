@@ -26,6 +26,12 @@ public abstract class Task {
         isDone = false;
     }
 
+    /**
+     * Determines which kind of task is to created based on the Initial given
+     * @param description The parameters of the task
+     * @return The type of Task to be created
+     * @throws DukeException
+     */
     public static Task createTask(String[] description) throws DukeException {
         switch (description[0]) {
             case "T":

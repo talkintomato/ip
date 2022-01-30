@@ -2,12 +2,24 @@ package duke.tasks;
 
 public class Todo extends Task {
 
+    /**
+     * The Initial which represents the Task
+     */
     private final static String INITIAL  = "T";
 
+    /**
+     * Class constructor
+     * @param description Description of Todo task
+     */
     public Todo(String description) {
         super(description);
     }
 
+    /**
+     * Class Constrcutor which specifies if the Todo is complete or in complete
+     * @param isDone
+     * @param description
+     */
     public Todo(String isDone, String description) {
         super(description);
         if (isDone.equals("true")) {
