@@ -1,1 +1,2 @@
-[D][ ] eat meal (by: thurs)
+T , false , read book , null
+D , false , read book , 2020-02-02

@@ -8,8 +8,7 @@ public class Duke {
     private Ui ui;
 
         public static void main(String[] args) {
-
-        new Duke("src/data/duke.txt").run();
+        new Duke("./src/data/duke.txt").run();
     }
 
     public Duke(String filePath) {
