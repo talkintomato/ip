@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 
 public class TaskList {
-    protected ArrayList<Task> todos = new ArrayList<>();
+
+    private ArrayList<Task> todos = new ArrayList<>();
 
     /**
      * Contructor for TodoList. Loads previous save state.
@@ -35,7 +36,8 @@ public class TaskList {
     public void removeTask(String index) throws DukeException {
         if (Integer.parseInt(index) < todos.size()) {
             Task task = todos.remove(Integer.parseInt(index));
-            System.out.println("Noted. I've removed this task: \n" + task + " you now have " + todos.size() + " tasks in the list.");
+            System.out.println("Noted. I've removed this task: \n" + task
+                    + " you now have " + todos.size() + " tasks in the list.");
         } else {
             throw new DukeException("Index out of range!!");
         }

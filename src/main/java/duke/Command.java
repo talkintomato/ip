@@ -8,6 +8,7 @@ import java.time.format.DateTimeParseException;
 public class Command {
 
     private String[] cmd;
+
     private boolean isExit = false;
 
     public Command(String[] cmd) {

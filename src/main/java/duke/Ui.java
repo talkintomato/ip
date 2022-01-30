@@ -3,6 +3,7 @@ package duke;
 import java.util.Scanner;
 
 public class Ui {
+
     public void launch() {
         String logo = " ____        _        \n"
                 + "|  _ \\ _   _| | _____ \n"

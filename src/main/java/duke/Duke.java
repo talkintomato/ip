@@ -3,8 +3,11 @@ package duke;
 import duke.exception.DukeException;
 
 public class Duke {
+
     private TaskList taskList;
+
     private Storage storage;
+
     private Ui ui;
 
         public static void main(String[] args) {

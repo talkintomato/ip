@@ -3,10 +3,10 @@ package duke.tasks;
 import duke.exception.DukeException;
 
 public abstract class Task {
+
     protected String description;
-    protected boolean isDone;
 
-
+    protected Boolean isDone;
 
     public Task(String description) {
         this.description = description;
