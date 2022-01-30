@@ -78,7 +78,6 @@ public class Command {
         }
     }
 
-<<<<<<< HEAD
     /**
      * Creates a Deadline and adds it to TaskList
      * @param cmd The parameters of the deadline to be created

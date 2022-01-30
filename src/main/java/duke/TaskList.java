@@ -87,12 +87,13 @@ public class TaskList {
         return tasks;
     }
 
+    //TODO throw exception for out of index
     /**
      * Mark a task on the list as completed
      * @param index Index of Task to be unmarked as completed
      */
     public void mark(String index) {
-        Task task = tasks.get(Integer.parseInt(index));
+        Task task = tasks.get(Integer.parseInt(index) - 1);
         if (task.getIsDone()) {
             System.out.println("Task already completed!");
         } else {
@@ -101,12 +102,13 @@ public class TaskList {
         }
     }
 
+    //TODO throw exception for out of index
     /**
      * unmark a task on the list as completed
      * @param index Index of Task to be unmarked
      */
     public void unmark(String index) {
-        Task task = tasks.get(Integer.parseInt(index));
+        Task task = tasks.get(Integer.parseInt(index) - 1);
         if (!task.getIsDone()) {
             System.out.println("Task not yet completed!");
         } else {
