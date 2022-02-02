@@ -9,11 +9,12 @@ import java.util.Hashtable;
 
 public class TaskList {
 
-    private ArrayList<Task> tasks = new ArrayList<>();
+    private ArrayList<Task> tasks;
     private Hashtable<String, ArrayList<Task>> keywordHt = new Hashtable<>();
 
     /**
      * Contructor for TodoList. Loads previous save state.
+     * @param tasks the list of tasks to be added
      */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
@@ -22,10 +23,12 @@ public class TaskList {
         }
     }
 
-    public TaskList() {}
+    public TaskList() {
+         tasks = new ArrayList<>();
+    }
 
     /**
-     * Adds a Task to the List
+     * Adds a Task to the List.
      * @param task task that has been created
      */
     public void addTask(Task task) {
@@ -33,6 +36,10 @@ public class TaskList {
         addTaskToHt(task);
     }
 
+    /**
+     * Adds an task form the hashtable.
+     * @param task task in the list to be added
+     */
     private void addTaskToHt(Task task) {
         String[] keywords = Parser.parseHashtable(task.getDescription());
         for (String keyword : keywords) {
@@ -47,6 +54,10 @@ public class TaskList {
         }
     }
 
+    /**
+     * Removes an task form the hashtable.
+     * @param task task in the list to be removed
+     */
     private void removeTaskFromHt(Task task) {
         String[] keywords = Parser.parseHashtable(task.getDescription());
         for (String keyword : keywords) {
@@ -55,6 +66,12 @@ public class TaskList {
         }
     }
 
+    /**
+     * Removes an task form the todosList.
+     * @param keyword keyword to be searched
+     * @throws DukeException
+     * @return the list of tasks which match the keywords
+     */
     public ArrayList<Task> searchKeyword(String keyword) throws DukeException {
         if (keywordHt.containsKey(keyword)) {
             return keywordHt.get(keyword);
@@ -65,7 +82,7 @@ public class TaskList {
 
 
     /**
-     * Removes an task form the todosList
+     * Removes an task form the todosList.
      * @param index Index of task in the list
      * @throws DukeException
      */
@@ -82,7 +99,8 @@ public class TaskList {
     }
 
     /**
-     * gets all tasks in the todosList
+     * gets all tasks in the todosList.
+     * @return the array of tasks.
      */
     public ArrayList<Task> getList() {
         return tasks;
@@ -90,7 +108,7 @@ public class TaskList {
 
     //TODO throw exception for out of index
     /**
-     * Mark a task on the list as completed
+     * Mark a task on the list as completed.
      * @param index Index of Task to be unmarked as completed
      */
     public void mark(String index) {
@@ -105,7 +123,7 @@ public class TaskList {
 
     //TODO throw exception for out of index
     /**
-     * unmark a task on the list as completed
+     * unmark a task on the list as completed.
      * @param index Index of Task to be unmarked
      */
     public void unmark(String index) {

@@ -12,11 +12,11 @@ import duke.tasks.*;
 
 public class Storage {
 
-    protected ArrayList<Task> todos = new ArrayList<>();
+    private ArrayList<Task> todos = new ArrayList<>();
     private String filePath;
 
     /**
-     * Constructor for Storage
+     * Constructor for Storage.
      *
      * @param filepath the path of the file to be written to and loaded from
      */
@@ -40,7 +40,7 @@ public class Storage {
     }
 
     /**
-     * Loaded the Task List from the saved file
+     * Loaded the Task List from the saved file.
      * @return the Task List from the saved file
      */
     public ArrayList<Task> load() {
@@ -48,7 +48,7 @@ public class Storage {
     }
 
     /**
-     * Save the current List to a file
+     * Save the current List to a file.
      */
     public void saveList() {
         try {
@@ -57,20 +57,22 @@ public class Storage {
                 Task currTask = todos.get(i);
                 if (currTask instanceof Todo) {
                     Todo currTodo = (Todo) currTask;
-                    myWriter.write(currTodo.getInitial() + " , " + currTodo.getIsDone() + " , "
-                            + currTodo.getDescription() + " , " + currTodo.getTime() +"\n");
-                }
-                else if (currTask instanceof Event) {
+                    myWriter.write(currTodo.getInitial() + " , "
+                            + currTodo.getIsDone() + " , " + currTodo.getDescription()
+                            + " , " + currTodo.getTime() + "\n");
+                } else if (currTask instanceof Event) {
                     Event currEvent = (Event) currTask;
-                    myWriter.write(currEvent.getInitial() + " , " + currEvent.getIsDone() + " , "
-                            + currEvent.getDescription() + " , " + currEvent.getTime() +"\n");
-                }
-                else if (currTask instanceof Deadline) {
+                    myWriter.write(currEvent.getInitial() + " , "
+                            + currEvent.getIsDone() + " , " + currEvent.getDescription()
+                            + " , " + currEvent.getTime() + "\n");
+                } else if (currTask instanceof Deadline) {
                     Deadline currDeadline = (Deadline) currTask;
-                    myWriter.write(currDeadline.getInitial() + " , " + currDeadline.getIsDone() + " , "
-                            + currDeadline.getDescription() + " , " + currDeadline.getTime() +"\n");
+                    myWriter.write(currDeadline.getInitial() + " , "
+                            + currDeadline.getIsDone() + " , " + currDeadline.getDescription()
+                            + " , " + currDeadline.getTime() + "\n");
+                } else {
+                    throw new DukeException("Unknown Task");
                 }
-                else throw new DukeException("Unknown Task");
             }
             myWriter.close();
         } catch (IOException e) {

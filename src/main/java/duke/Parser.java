@@ -7,7 +7,7 @@ public class Parser {
     }
 
     public static String[] parseHashtable(String cmd) {
-        return cmd.split(" " );
+        return cmd.split(" ");
     }
 
 }

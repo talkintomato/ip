@@ -15,7 +15,7 @@ public class Duke {
     }
 
     /**
-     * Constructor for class
+     * Constructor for class.
      * @param filePath The path which to save and load taskList state from
      */
     public Duke(String filePath) {
@@ -30,7 +30,7 @@ public class Duke {
     }
 
     /**
-     *  Starts running Duke
+     *  Starts running Duke.
      */
     public void run() {
         ui.launch();
