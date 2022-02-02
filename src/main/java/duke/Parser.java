@@ -2,7 +2,6 @@ package duke;
 
 public class Parser {
 
-
     public static Command parseCommand(String cmd) {
         return new Command(cmd.split(" ", 2));
     }

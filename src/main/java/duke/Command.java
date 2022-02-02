@@ -9,7 +9,7 @@ public class Command {
 
     private String[] cmd;
 
-    private boolean isExit = false;
+    private boolean isExiting = false;
 
     public Command(String[] cmd) {
         this.cmd = cmd;
@@ -24,42 +24,42 @@ public class Command {
      */
     public void execute(TaskList taskList, Ui ui, Storage storage) throws DukeException {
         switch(cmd[0]) {
-            case "list" :
-                ui.printList(taskList.getList());
-                break;
-            case "mark" :
-                taskList.mark(cmd[1]);
-                break;
-            case "unmark" :
-                taskList.unmark(cmd[1]);
-                break;
-            case "find" :
-                ui.showSearchResults(taskList.searchKeyword(cmd[1]));
-                break;
-            //Event creation
-            case "todo":
-                createTodo(cmd, taskList, ui);
-                break;
-            case "deadline":
-                createDeadline(cmd, taskList, ui);
-                break;
-            case "event":
-                createEvent(cmd, taskList, ui);
-                break;
-            case "delete":
-                taskList.removeTask(cmd[1]);
-                break;
-            case "bye" :
-                isExit = true;
-                break;
-            default:
-                throw new DukeException("I'm not sure what that means :((");
+        case "list" :
+            ui.printList(taskList.getList());
+            break;
+        case "mark" :
+            taskList.mark(cmd[1]);
+            break;
+        case "unmark" :
+            taskList.unmark(cmd[1]);
+            break;
+        case "find" :
+            ui.showSearchResults(taskList.searchKeyword(cmd[1]));
+            break;
+        //Event creation
+        case "todo":
+            createTodo(cmd, taskList, ui);
+            break;
+        case "deadline":
+            createDeadline(cmd, taskList, ui);
+            break;
+        case "event":
+            createEvent(cmd, taskList, ui);
+            break;
+        case "delete":
+            taskList.removeTask(cmd[1]);
+            break;
+        case "bye" :
+            isExiting = true;
+            break;
+        default:
+            throw new DukeException("I'm not sure what that means :((");
         }
         storage.saveList();
     }
 
     public boolean getExitStatus() {
-        return isExit;
+        return isExiting;
     }
 
     /**

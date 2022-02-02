@@ -13,7 +13,7 @@ import duke.tasks.*;
 public class Storage {
 
     protected ArrayList<Task> todos = new ArrayList<>();
-    private String filepath;
+    private String filePath;
 
     /**
      * Constructor for Storage
@@ -21,7 +21,7 @@ public class Storage {
      * @param filepath the path of the file to be written to and loaded from
      */
     public Storage(String filepath) {
-        this.filepath = filepath;
+        this.filePath = filepath;
         try {
             File savedFile = new File(filepath);
             Scanner scanner = new Scanner(savedFile);
@@ -52,20 +52,23 @@ public class Storage {
      */
     public void saveList() {
         try {
-            FileWriter myWriter = new FileWriter(filepath);
+            FileWriter myWriter = new FileWriter(filePath);
             for (int i = 0; i < todos.size(); i = i + 1) {
                 Task currTask = todos.get(i);
                 if (currTask instanceof Todo) {
                     Todo currTodo = (Todo) currTask;
-                    myWriter.write(currTodo.getInitial() + " , " + currTodo.getIsDone() + " , " + currTodo.getDescription() + " , " + currTodo.getTime() +"\n");
+                    myWriter.write(currTodo.getInitial() + " , " + currTodo.getIsDone() + " , "
+                            + currTodo.getDescription() + " , " + currTodo.getTime() +"\n");
                 }
                 else if (currTask instanceof Event) {
                     Event currEvent = (Event) currTask;
-                    myWriter.write(currEvent.getInitial() + " , " + currEvent.getIsDone() + " , " + currEvent.getDescription() + " , " + currEvent.getTime() +"\n");
+                    myWriter.write(currEvent.getInitial() + " , " + currEvent.getIsDone() + " , "
+                            + currEvent.getDescription() + " , " + currEvent.getTime() +"\n");
                 }
                 else if (currTask instanceof Deadline) {
                     Deadline currDeadline = (Deadline) currTask;
-                    myWriter.write(currDeadline.getInitial() + " , " + currDeadline.getIsDone() + " , " + currDeadline.getDescription() + " , " + currDeadline.getTime() +"\n");
+                    myWriter.write(currDeadline.getInitial() + " , " + currDeadline.getIsDone() + " , "
+                            + currDeadline.getDescription() + " , " + currDeadline.getTime() +"\n");
                 }
                 else throw new DukeException("Unknown Task");
             }
