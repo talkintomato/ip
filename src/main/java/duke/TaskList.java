@@ -55,12 +55,19 @@ public class TaskList {
         }
     }
 
-    public ArrayList<Task> searchKeyword(String keyword) throws DukeException {
-        if (keywordHt.containsKey(keyword)) {
-            return keywordHt.get(keyword);
-        } else {
+    private void validateKeyword(String keyword) throws DukeException {
+        if (!keywordHt.containsKey(keyword)) {
             throw new DukeException("No Search Results found");
         }
+    }
+
+    public String searchKeyword(String keyword) throws DukeException {
+        validateKeyword(keyword);
+        String response = "";
+        for (Task task : keywordHt.get(keyword)) {
+            response = response + task + "\n";
+        }
+        return response;
     }
 
 
@@ -68,15 +75,17 @@ public class TaskList {
      * Removes an task form the todosList
      * @param index Index of task in the list
      * @throws DukeException
+     * @return removed Task
      */
-    public void removeTask(String index) throws DukeException {
+    public Task removeTask(String index) throws DukeException {
+        validateIndex(index);
+        Task removedTask = tasks.remove(Integer.parseInt(index) - 1);
+        removeTaskFromHt(removedTask);
+        return removedTask;
+    }
 
-        if (Integer.parseInt(index) - 1 < tasks.size()) {
-            Task task = tasks.remove(Integer.parseInt(index) - 1);
-            removeTaskFromHt(task);
-            System.out.println("Noted. I've removed this task: \n" + task + " you now have "
-                    + tasks.size() + " tasks in the list.");
-        } else {
+    public void validateIndex(String index) throws DukeException {
+        if (Integer.parseInt(index) - 1 > tasks.size() || Integer.parseInt(index) < 0) {
             throw new DukeException("Index out of range!!");
         }
     }
@@ -93,14 +102,16 @@ public class TaskList {
      * Mark a task on the list as completed
      * @param index Index of Task to be unmarked as completed
      */
-    public void mark(String index) {
+    public String mark(String index) {
         Task task = tasks.get(Integer.parseInt(index) - 1);
+        String response;
         if (task.getIsDone()) {
-            System.out.println("Task already completed!");
+            response = "Task already completed!";
         } else {
             task.done();
-            System.out.println("Nice! I've marked this task as done:\n" + task);
+            response = ("Nice! I've marked this task as done:\n" + task);
         }
+        return response;
     }
 
     //TODO throw exception for out of index
@@ -108,14 +119,16 @@ public class TaskList {
      * unmark a task on the list as completed
      * @param index Index of Task to be unmarked
      */
-    public void unmark(String index) {
+    public String unmark(String index) {
         Task task = tasks.get(Integer.parseInt(index) - 1);
+        String response;
         if (!task.getIsDone()) {
-            System.out.println("Task not yet completed!");
+            response = "Task not yet completed!";
         } else {
             task.notDone();
-            System.out.println("Oh no! one more thing that needs to be done:\n" + task);
+            response = ("Oh no! one more thing that needs to be done:\n" + task);
         }
+        return response;
     }
 
 }
