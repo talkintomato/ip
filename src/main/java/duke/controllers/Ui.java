@@ -7,18 +7,6 @@ import java.util.ArrayList;
 
 public class Ui {
 
-    /**
-     * You should have your own function to generate a response to user input.
-     * Replace this stub with your completed method.
-     */
-    private String getResponse(String input) {
-        return "Duke heard: " + input;
-    }
-
-    public void showLine() {
-        System.out.println("_______________");
-    }
-
     public void showError(String error) {
         System.out.println(error);
     }

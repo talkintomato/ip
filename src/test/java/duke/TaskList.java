@@ -27,7 +27,7 @@ class TaskListTest {
         TaskList tasks = new TaskList();
         Todo todo = new Todo("false", "read book");
         tasks.addTask(todo);
-        tasks.mark("0");
+        tasks.mark(0);
         assertEquals(todo.getIsDone(), true);
     }
 
@@ -36,7 +36,7 @@ class TaskListTest {
         TaskList tasks = new TaskList();
         Todo todo = new Todo("true", "read book");
         tasks.addTask(todo);
-        tasks.unmark("0");
+        tasks.unmark(0);
         assertEquals(todo.getIsDone(), false);
     }
 

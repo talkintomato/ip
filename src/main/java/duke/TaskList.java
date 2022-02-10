@@ -13,7 +13,7 @@ public class TaskList {
     private Hashtable<String, ArrayList<Task>> keywordHt = new Hashtable<>();
 
     /**
-     * Contructor for TodoList. Loads previous save state.
+     * Constructor for TodoList. Loads previous save state.
      */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
@@ -74,18 +74,18 @@ public class TaskList {
     /**
      * Removes an task form the todosList
      * @param index Index of task in the list
-     * @throws DukeException
+     * @throws DukeException if removed task is out of index range
      * @return removed Task
      */
-    public Task removeTask(String index) throws DukeException {
+    public Task removeTask(int index) throws DukeException {
         validateIndex(index);
-        Task removedTask = tasks.remove(Integer.parseInt(index) - 1);
+        Task removedTask = tasks.remove(index - 1);
         removeTaskFromHt(removedTask);
         return removedTask;
     }
 
-    public void validateIndex(String index) throws DukeException {
-        if (Integer.parseInt(index) - 1 > tasks.size() || Integer.parseInt(index) < 0) {
+    public void validateIndex(int index) throws DukeException {
+        if (index - 1 > tasks.size() || index < 0) {
             throw new DukeException("Index out of range!!");
         }
     }
@@ -102,8 +102,8 @@ public class TaskList {
      * Mark a task on the list as completed
      * @param index Index of Task to be unmarked as completed
      */
-    public String mark(String index) {
-        Task task = tasks.get(Integer.parseInt(index) - 1);
+    public String mark(int index) {
+        Task task = tasks.get(index - 1);
         String response;
         if (task.getIsDone()) {
             response = "Task already completed!";
@@ -119,8 +119,8 @@ public class TaskList {
      * unmark a task on the list as completed
      * @param index Index of Task to be unmarked
      */
-    public String unmark(String index) {
-        Task task = tasks.get(Integer.parseInt(index) - 1);
+    public String unmark(int index) {
+        Task task = tasks.get(index - 1);
         String response;
         if (!task.getIsDone()) {
             response = "Task not yet completed!";
