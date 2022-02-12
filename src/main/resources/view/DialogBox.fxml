@@ -9,7 +9,7 @@
     <children>
         <Label fx:id="dialog" text="Label" wrapText="true" HBox.hgrow="ALWAYS">
          <padding>
-            <Insets left="15.0" right="15.0" />
+            <Insets left="15.0" right="15.0" />;wq:
          </padding></Label>
         <ImageView fx:id="displayPicture" fitHeight="99.0" fitWidth="99.0" pickOnBounds="true" preserveRatio="true" HBox.hgrow="ALWAYS" />
     </children>
