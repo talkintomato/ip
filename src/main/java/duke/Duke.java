@@ -2,6 +2,7 @@ package duke;
 
 
 import duke.commands.Command;
+import duke.controllers.Parser;
 import duke.exception.DukeException;
 
 public class Duke {
@@ -26,6 +27,7 @@ public class Duke {
         try {
             Command c = Parser.parseCommand(userInput);
             String response = c.execute(taskList, storage);
+            storage.saveList();
             return response;
         } catch (DukeException e) {
             return e.getMessage();

@@ -18,6 +18,7 @@ public class DeleteCmd extends Command{
         this.index = index;
     }
 
+    @Override
     public String execute(TaskList taskList, Storage storage) {
         try {
             return ui.showTaskRemoved(taskList.removeTask(index));

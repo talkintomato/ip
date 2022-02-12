@@ -5,6 +5,7 @@ import duke.TaskList;
 
 
 public class MarkCmd extends Command{
+
     private int index;
 
     /**
@@ -17,6 +18,7 @@ public class MarkCmd extends Command{
         this.index = index;
     }
 
+    @Override
     public String execute(TaskList taskList, Storage storage) {
         return taskList.mark(index);
     }

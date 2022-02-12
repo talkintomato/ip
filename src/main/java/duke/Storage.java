@@ -13,7 +13,8 @@ import duke.tasks.*;
 public class Storage {
 
     protected ArrayList<Task> todos = new ArrayList<>();
-    private String filePath;
+//    private String filename = "/duke.txt";
+    private File file;
 
     /**
      * Constructor for Storage
@@ -21,19 +22,18 @@ public class Storage {
      * @param filepath the path of the file to be written to and loaded from
      */
     public Storage(String filepath) {
-        this.filePath = filepath;
+        this.file = new File("./src/main/java/data/duke.txt");
+
         try {
-            File savedFile = new File(filepath);
-            Scanner scanner = new Scanner(savedFile);
+            Scanner scanner = new Scanner(file);
             while (scanner.hasNextLine()) {
                 String data = scanner.nextLine();
                 String[] taskData = data.split(" , ");
                 Task task = Task.createTask(taskData);
                 todos.add(task);
             }
-            scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("No previous save state");
+            System.out.println(e.getMessage());
         } catch (DukeException e) {
             System.out.println("Data corrupted");
         }
@@ -52,7 +52,7 @@ public class Storage {
      */
     public void saveList() {
         try {
-            FileWriter myWriter = new FileWriter(filePath);
+            FileWriter myWriter = new FileWriter(file);
             for (int i = 0; i < todos.size(); i = i + 1) {
                 Task currTask = todos.get(i);
                 if (currTask instanceof Todo) {

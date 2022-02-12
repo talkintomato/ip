@@ -12,6 +12,7 @@ public class CreateDeadlineCmd extends Command {
         this.deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
     }
 
+    @Override
     public String execute(TaskList taskList, Storage storage) {
         taskList.addTask(deadline);
         return ui.showTaskAdded(deadline);

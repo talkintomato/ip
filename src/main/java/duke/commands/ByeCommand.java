@@ -3,12 +3,14 @@ package duke.commands;
 import duke.Storage;
 import duke.TaskList;
 
+public class ByeCommand extends Command {
 
-public class ListCmd extends Command{
+    public ByeCommand() {}
 
     @Override
     public String execute(TaskList taskList, Storage storage) {
-            return ui.printList(taskList.getList());
+        System.exit(0);;
+        return ui.showExitMessage();
     }
 
 }

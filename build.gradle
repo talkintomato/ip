@@ -19,4 +19,12 @@ javafx {
     modules = [ 'javafx.controls',  'javafx.fxml' ]
 }
 
-mainClassName = 'duke.Duke'
+application {
+    mainClassName = "duke.Launcher"
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'duke.Launcher'
+    }
+}

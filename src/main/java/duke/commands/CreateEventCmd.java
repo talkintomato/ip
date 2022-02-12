@@ -12,6 +12,7 @@ public class CreateEventCmd extends Command {
         this.event = new Event(eventDetails[0], eventDetails[1]);
     }
 
+    @Override
     public String execute(TaskList taskList, Storage storage) {
         taskList.addTask(event);
         return ui.showTaskAdded(event);

@@ -1,4 +1,4 @@
-package duke;
+package duke.controllers;
 
 import duke.commands.Command;
 import duke.exception.DukeException;
@@ -27,7 +27,7 @@ public class Parser {
         case "delete":
             return new DeleteCmd(Integer.parseInt(cmdVar[1]));
         case "bye":
-            System.exit(0);
+            return new ByeCommand();
 
         default:
             //TODO: make it a exception

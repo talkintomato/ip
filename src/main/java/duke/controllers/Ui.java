@@ -11,8 +11,8 @@ public class Ui {
         System.out.println(error);
     }
 
-    public void showExitMessage() {
-        System.out.println("Bye. See you later!");
+    public String showExitMessage() {
+        return "Bye. See you later!";
     }
 
     public String showTaskAdded(Task task) {return "Added: " + task.getDescription();}
