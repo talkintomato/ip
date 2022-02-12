@@ -27,6 +27,20 @@ public class Ui {
         }
     }
 
+    public String help() {
+        String helpText = "Main Commands: \n"
+                + "\n1. todo <description> ---> Creates a Todo Task"
+                + "\n2. deadline <description> /by <date in yyyy-mm-d> ---> Creates a Deadline Task"
+                + "\n3. event <description> /on <date in yyyy-mm-d> ---> Creates an Event Task"
+                + "\n4. list ---> Shows Task List "
+                + "\n5. find <Keyword> ---> Shows tasks with related keyword"
+                + "\n6. delete <Index> ---> Removes a task form the Task List"
+                + "\n7. mark <Index> ---> Marks task as done"
+                + "\n8. bye <Index> ---> closes duke";
+
+        return helpText;
+    }
+
     public String printList(ArrayList<Task> tasks) {
         String response = "";
         if (tasks.size() == 0) {

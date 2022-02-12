@@ -26,8 +26,10 @@ public class Parser {
             return new CreateEventCmd(cmdVar);
         case "delete":
             return new DeleteCmd(Integer.parseInt(cmdVar[1]));
+        case "help":
+            return new HelpCmd();
         case "bye":
-            return new ByeCommand();
+            return new ByeCmd();
 
         default:
             //TODO: make it a exception
