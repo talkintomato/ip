@@ -22,6 +22,8 @@ Example of usage:
 
 `todo <description>`
 
+---
+-
 
 ### `deadline` - Creates a Deadline Task
 
@@ -29,6 +31,7 @@ Example of usage:
 
 `deadline <description> /by <date in yyyy-mm-d> `
 
+---
 
 ### `event` -  Creates an Event Task
 
@@ -36,7 +39,7 @@ Example of usage:
 
 `event <description> /on <date in yyyy-mm-d>`
 
-
+---
 
 ### `list` -  Shows Task List
 
@@ -44,8 +47,7 @@ Example of usage:
 
 `list`
 
-
-
+---
 
 ### `find` - Shows tasks with related keyword
 
@@ -53,7 +55,7 @@ Example of usage:
 
 `find <Keyword>`
 
-
+---
 
 ### `delete` - Removes a task form the Task List
 
@@ -61,8 +63,7 @@ Example of usage:
 
 `delete <Index>`
 
-
-
+---
 
 ### `mark` -  Marks task as complete
 
@@ -70,12 +71,15 @@ Example of usage:
 
 `mark <Index>`
 
+---
+
 ### `unmark` -  Marks task as incomplete
 
 Example of usage:
 
 `unmark <Index>`
 
+---
 
 ### `bye` - Closes duke
 
@@ -83,7 +87,7 @@ Example of usage:
 
 `todo <description>`
 
-Description of the outcome.
+
 
 
 
