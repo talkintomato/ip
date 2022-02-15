@@ -37,9 +37,6 @@ Example of usage:
 `event <description> /on <date in yyyy-mm-d>`
 
 
-```
-expected output
-```
 
 ### `list` -  Shows Task List
 
@@ -47,9 +44,7 @@ Example of usage:
 
 `list`
 
-```
-expected output
-```
+
 
 
 ### `find` - Shows tasks with related keyword
@@ -58,9 +53,6 @@ Example of usage:
 
 `find <Keyword>`
 
-```
-expected output
-```
 
 
 ### `delete` - Removes a task form the Task List
@@ -69,9 +61,7 @@ Example of usage:
 
 `delete <Index>`
 
-```
-expected output
-```
+
 
 
 ### `mark` -  Marks task as complete
@@ -80,18 +70,12 @@ Example of usage:
 
 `mark <Index>`
 
-```
-expected output
-```
 ### `unmark` -  Marks task as incomplete
 
 Example of usage:
 
 `unmark <Index>`
 
-```
-expected output
-```
 
 ### `bye` - Closes duke
 
@@ -101,9 +85,6 @@ Example of usage:
 
 Description of the outcome.
 
-```
-expected output
-```
 
 
 
