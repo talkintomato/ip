@@ -23,7 +23,9 @@ Example of usage:
 `todo <description>`
 
 ```
-todo Read book --> Added: Read book
+todo Read book 
+----
+Added: Read book
 ```
 ---
 
@@ -35,7 +37,7 @@ Example of usage:
 
 ```
 deadline Finish book /by 2022-01-01 
- 
+----
 Added: Finish book
 ```
 ---
@@ -48,7 +50,7 @@ Example of usage:
 
 ```
 event Dinner party /on 2022-02-02 
- 
+----
 Added: Dinner party 
 ```
 ---
@@ -61,7 +63,7 @@ Example of usage:
 
 ```
 list 
-
+----
 [T][] Read book 
 [D][] Finish book
 [E][] Dinner Party 
@@ -76,7 +78,7 @@ Example of usage:
 
 ```
 find book 
-
+----
 [T][] Read book 
 [D][] Finish book
 ```
@@ -90,7 +92,7 @@ Example of usage:
 
 ```
 mark 1
-
+----
 Nice! I've marked this task as done: 
 [T][X] Read book
 ```
@@ -105,7 +107,7 @@ Example of usage:
 
 ```
 unmark 1
-
+----
 Oh no! one more thing that needs to be done: 
 [T][] Read book 
 ```
@@ -120,7 +122,7 @@ Example of usage:
 
 ```
 delete 1 
-
+----
 Noted. I've removed this task: 
 [T][] Read book 
 ```
