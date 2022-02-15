@@ -36,7 +36,7 @@ public class Ui {
                 + "\n5. find <Keyword> ---> Shows tasks with related keyword"
                 + "\n6. delete <Index> ---> Removes a task form the Task List"
                 + "\n7. mark <Index> ---> Marks task as done"
-                + "\n8. bye <Index> ---> closes duke";
+                + "\n8. bye ---> closes duke";
 
         return helpText;
     }
