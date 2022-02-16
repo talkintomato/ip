@@ -12,6 +12,12 @@ public class CreateDeadlineCmd extends Command {
         this.deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
     }
 
+    /**
+     * Executes creation of Deadline Task.
+     * @param taskList the instance of the TaskList.
+     * @param storage instance of storage.
+     * @return Response from Duke.
+     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         taskList.addTask(deadline);

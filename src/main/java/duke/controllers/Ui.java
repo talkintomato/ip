@@ -15,7 +15,7 @@ public class Ui {
         return "Bye. See you later!";
     }
 
-    public String showTaskAdded(Task task) {return "Added: " + task.getDescription();}
+    public String showTaskAdded(Task task) { return "Added: " + task.getDescription();}
 
     public String showTaskRemoved(Task task) {
         return "Noted. I've removed this task: \n" + task;

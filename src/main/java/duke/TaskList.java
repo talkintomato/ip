@@ -10,7 +10,9 @@ import java.util.Hashtable;
 
 public class TaskList {
 
+
     private ArrayList<Task> tasks = new ArrayList<>();
+
     private Hashtable<String, ArrayList<Task>> keywordHt = new Hashtable<>();
 
     /**

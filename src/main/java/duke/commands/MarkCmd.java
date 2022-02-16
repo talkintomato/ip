@@ -18,6 +18,12 @@ public class MarkCmd extends Command{
         this.index = index;
     }
 
+    /**
+     * Executes marking task as completed.
+     * @param taskList the instance of the TaskList.
+     * @param storage instance of storage.
+     * @return Response from Duke.
+     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         return taskList.mark(index);

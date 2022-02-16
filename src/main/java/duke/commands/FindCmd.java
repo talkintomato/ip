@@ -4,6 +4,7 @@ import duke.Storage;
 import duke.TaskList;
 
 public class FindCmd extends Command{
+
     private String keyword;
 
     /**
@@ -16,6 +17,12 @@ public class FindCmd extends Command{
         this.keyword = keyword;
     }
 
+    /**
+     * Executes finding of task which match the keyword provided.
+     * @param taskList the instance of the TaskList.
+     * @param storage instance of storage.
+     * @return Response from Duke.
+     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         try {

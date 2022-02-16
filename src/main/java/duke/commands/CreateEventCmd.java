@@ -12,6 +12,12 @@ public class CreateEventCmd extends Command {
         this.event = new Event(eventDetails[0], eventDetails[1]);
     }
 
+    /**
+     * Executes creation of Event Task.
+     * @param taskList the instance of the TaskList.
+     * @param storage instance of storage.
+     * @return Response from Duke.
+     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         taskList.addTask(event);

@@ -17,6 +17,12 @@ public class UnmarkCmd extends Command{
         this.index = index;
     }
 
+    /**
+     * Executes marking task as incomplete.
+     * @param taskList the instance of the TaskList.
+     * @param storage instance of storage.
+     * @return Response from Duke.
+     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         return taskList.unmark(index);

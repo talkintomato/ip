@@ -18,6 +18,12 @@ public class DeleteCmd extends Command{
         this.index = index;
     }
 
+    /**
+     * Executes deleting of a task.
+     * @param taskList the instance of the TaskList.
+     * @param storage instance of storage.
+     * @return Reponse from Duke.
+     */
     @Override
     public String execute(TaskList taskList, Storage storage) {
         try {

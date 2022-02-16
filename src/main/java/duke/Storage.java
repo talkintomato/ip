@@ -22,7 +22,7 @@ public class Storage {
      * @param filepath the path of the file to be written to and loaded from
      */
     public Storage(String filepath) {
-        this.file = new File("./src/main/java/data/duke.txt");
+        this.file = new File("src/main/java/Duke/duke.txt");
 
         try {
             Scanner scanner = new Scanner(file);
