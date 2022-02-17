@@ -2,6 +2,7 @@ package duke.commands;
 
 import duke.Storage;
 import duke.TaskList;
+import duke.exception.DukeException;
 
 import java.security.spec.ECField;
 
@@ -25,7 +26,7 @@ public class DeleteCmd extends Command{
      * @return Reponse from Duke.
      */
     @Override
-    public String execute(TaskList taskList, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) throws DukeException {
         try {
             return ui.showTaskRemoved(taskList.removeTask(index));
         } catch (Exception e) {

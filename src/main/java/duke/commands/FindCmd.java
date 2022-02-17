@@ -2,6 +2,7 @@ package duke.commands;
 
 import duke.Storage;
 import duke.TaskList;
+import duke.exception.DukeException;
 
 public class FindCmd extends Command{
 
@@ -24,7 +25,7 @@ public class FindCmd extends Command{
      * @return Response from Duke.
      */
     @Override
-    public String execute(TaskList taskList, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) throws DukeException {
         try {
             return taskList.searchKeyword(keyword);
         } catch (Exception e) {

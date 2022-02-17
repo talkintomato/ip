@@ -2,6 +2,7 @@ package duke.commands;
 
 import duke.Storage;
 import duke.TaskList;
+import duke.exception.DukeException;
 
 
 public class MarkCmd extends Command{
@@ -25,7 +26,7 @@ public class MarkCmd extends Command{
      * @return Response from Duke.
      */
     @Override
-    public String execute(TaskList taskList, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) throws DukeException {
         return taskList.mark(index);
     }
 

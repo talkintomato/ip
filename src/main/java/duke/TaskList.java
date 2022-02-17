@@ -105,7 +105,11 @@ public class TaskList {
      * Mark a task on the list as completed
      * @param index Index of Task to be unmarked as completed
      */
-    public String mark(int index) {
+    public String mark(int index) throws DukeException {
+        if (index > tasks.size() || index <= 0 ) {
+            throw new DukeException("Invalid Index!");
+        }
+
         Task task = tasks.get(index - 1);
         String response;
         if (task.getIsDone()) {
@@ -122,7 +126,11 @@ public class TaskList {
      * unmark a task on the list as completed
      * @param index Index of Task to be unmarked
      */
-    public String unmark(int index) {
+    public String unmark(int index) throws DukeException{
+        if (index > tasks.size() || index <= 0 ) {
+            throw new DukeException("Invalid Index!");
+        }
+
         Task task = tasks.get(index - 1);
         String response;
         if (!task.getIsDone()) {

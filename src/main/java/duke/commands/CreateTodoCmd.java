@@ -2,7 +2,10 @@ package duke.commands;
 
 import duke.Storage;
 import duke.TaskList;
+import duke.exception.DukeException;
 import duke.tasks.Todo;
+
+import java.time.format.DateTimeParseException;
 
 public class CreateTodoCmd extends Command {
     private Todo todo;
@@ -18,7 +21,7 @@ public class CreateTodoCmd extends Command {
      * @return Response from Duke.
      */
     @Override
-    public String execute(TaskList taskList, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) throws DukeException {
         taskList.addTask(todo);
         return ui.showTaskAdded(todo);
     }

@@ -2,6 +2,7 @@ package duke.commands;
 
 import duke.Storage;
 import duke.TaskList;
+import duke.exception.DukeException;
 
 public class HelpCmd extends Command {
 
@@ -12,7 +13,7 @@ public class HelpCmd extends Command {
      * @return Response from Duke.
      */
     @Override
-    public String execute(TaskList taskList, Storage storage) {
+    public String execute(TaskList taskList, Storage storage) throws DukeException {
         return ui.help();
     }
 }

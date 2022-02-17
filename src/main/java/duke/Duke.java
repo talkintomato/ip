@@ -18,8 +18,9 @@ public class Duke {
         storage = new Storage(filePath);
         try {
             taskList = new TaskList(storage.load());
-        } catch (Exception e) {
+        } catch (DukeException e) {
             this.taskList = new TaskList();
+            System.out.println(e.getMessage());
         }
     }
 
@@ -27,13 +28,13 @@ public class Duke {
         try {
             Command c = Parser.parseCommand(userInput);
             String response = c.execute(taskList, storage);
-            storage.saveList();
-            return response;
+            storage.saveList(taskList.getList());
+            return "KRAW!! Kraw!! \n" + response;
         } catch (DukeException e) {
-            return e.getMessage();
+            return "KRAW!! Kraw!! \n" + e.getMessage();
+        } catch (Exception e) {
+            return "KRAW!! Kraw!! \n Invalid Input!! use <help> to see commands!" ;
         }
-        //TODO: throw end exception
-
     }
 
 }
