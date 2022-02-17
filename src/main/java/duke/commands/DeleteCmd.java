@@ -4,8 +4,6 @@ import duke.Storage;
 import duke.TaskList;
 import duke.exception.DukeException;
 
-import java.security.spec.ECField;
-
 public class DeleteCmd extends Command{
     private int index;
 

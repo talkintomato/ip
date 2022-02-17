@@ -42,7 +42,7 @@ public class Storage {
     /**
      * Loads the file data (if there is a valid data file).
      *
-     * @return String representation of the data being loaded.
+     * @return ArrayList of Tasks from data being loaded.
      * @throws DukeException if file doesn't exist, directory doesn't exist, or when file consist no data.
      */
     public ArrayList<Task> load() throws DukeException {
@@ -77,7 +77,7 @@ public class Storage {
     }
 
     /**
-     * Saves data passed into the destination as stated when Storage instance is being initialised.
+     * Saves TaskList passed into the destination.
      */
     public void saveList(ArrayList<Task> todoNew) {
         todos = todoNew;

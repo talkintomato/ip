@@ -33,9 +33,6 @@ public class Todo extends Task {
 
     public String getTime() {return null;}
 
-    public String getStatus() {
-        return (isDone ? "[X] " + this.description : "[ ] " + this.description); // mark done task with X}
-    }
 
     @Override
     public String toString() {

@@ -7,16 +7,22 @@ import duke.tasks.Task;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-
+/**
+ * The Object which stores and manages Tasks
+ */
 public class TaskList {
-
 
     private ArrayList<Task> tasks = new ArrayList<>();
 
+    /**
+     * Hashtable increases efficiency of keyword search
+     */
     private Hashtable<String, ArrayList<Task>> keywordHt = new Hashtable<>();
+
 
     /**
      * Constructor for TodoList. Loads previous save state.
+     * @param tasks ArrayList of tasks that are to populate TaskList
      */
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
@@ -58,6 +64,11 @@ public class TaskList {
         }
     }
 
+    /**
+     * Ensures that Keyword exists in TaskList
+     * @param keyword The String which is being searched
+     * @throws DukeException thrown when Keyword is not found in TaskList
+     */
     private void validateKeyword(String keyword) throws DukeException {
         if (!keywordHt.containsKey(keyword)) {
             throw new DukeException("No Search Results found");
@@ -87,7 +98,13 @@ public class TaskList {
         return removedTask;
     }
 
-    public void validateIndex(int index) throws DukeException {
+    /**
+     * Ensures a valid index is being used
+     * @param index
+     * @throws DukeException
+     */
+
+    private void validateIndex(int index) throws DukeException {
         if (index - 1 > tasks.size() || index < 0) {
             throw new DukeException("Index out of range!!");
         }
@@ -100,7 +117,6 @@ public class TaskList {
         return tasks;
     }
 
-    //TODO throw exception for out of index
     /**
      * Mark a task on the list as completed
      * @param index Index of Task to be unmarked as completed
@@ -121,7 +137,6 @@ public class TaskList {
         return response;
     }
 
-    //TODO throw exception for out of index
     /**
      * unmark a task on the list as completed
      * @param index Index of Task to be unmarked
