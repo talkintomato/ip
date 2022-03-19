@@ -16,7 +16,7 @@ import javafx.stage.Stage;
  */
 public class Main extends Application {
 
-    private Duke duke = new Duke("data/tasks.txt");
+    private Duke duke = new Duke(System.getProperty("user.dir") + "/data/tasks.txt");
 
     @Override
     public void start(Stage stage) {

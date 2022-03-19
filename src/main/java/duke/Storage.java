@@ -10,7 +10,7 @@ import java.util.Scanner;
 import duke.exception.DukeException;
 import duke.tasks.*;
 
-//Solution below adapted from https://github.com/lamwj98/ip/blob/master/src/main/java/siri/Storage.java
+//Solution below adapted from https://github.com/goalfix/ip/blob/master/src/main/java/duke/Storage.java
 
 public class Storage {
 
@@ -43,11 +43,11 @@ public class Storage {
             if (directory.mkdirs()) {
                 System.out.println("Created new directory /data");
             }
-            File taskTextFile = new File("data/task.txt");
+            File taskTextFile = new File(filePath);
             if (taskTextFile.createNewFile()) {
                 System.out.println("Created text file as /data/task.txt");
             }
-            Scanner sc = new Scanner(Paths.get("data/task.txt")); // create a Scanner using the File as the source
+            Scanner sc = new Scanner(Paths.get(filePath)); // create a Scanner using the File as the source
 
             ArrayList<Task> todos = new ArrayList<Task>();
 
@@ -73,7 +73,7 @@ public class Storage {
         todos = todoNew;
 
         try {
-            FileWriter myWriter = new FileWriter("data/task.txt");
+            FileWriter myWriter = new FileWriter(filePath);
             for (int i = 0; i < todos.size(); i = i + 1) {
                 Task currTask = todos.get(i);
                 if (currTask instanceof Todo) {
