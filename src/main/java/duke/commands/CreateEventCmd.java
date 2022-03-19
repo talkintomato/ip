@@ -13,7 +13,7 @@ public class CreateEventCmd extends Command {
     public CreateEventCmd(String[] cmdVar) throws DukeException {
         String[] eventDetails = cmdVar[1].split(" /at ", 2);
         if (eventDetails.length != 2) {
-            throw new DukeException("Invalid event input!");
+            throw new DukeException("Invalid event input! \nevent <description> /at <date in yyyy-mm-d>");
         }
         this.event = new Event(eventDetails[0], eventDetails[1]);
     }

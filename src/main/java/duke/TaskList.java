@@ -103,7 +103,6 @@ public class TaskList {
      * @param index
      * @throws DukeException
      */
-
     private void validateIndex(int index) throws DukeException {
         if (index - 1 > tasks.size() || index < 0) {
             throw new DukeException("Index out of range!!");
@@ -120,6 +119,7 @@ public class TaskList {
     /**
      * Mark a task on the list as completed
      * @param index Index of Task to be unmarked as completed
+     * @throws DukeException
      */
     public String mark(int index) throws DukeException {
         if (index > tasks.size() || index <= 0 ) {
@@ -140,6 +140,7 @@ public class TaskList {
     /**
      * unmark a task on the list as completed
      * @param index Index of Task to be unmarked
+     * @throws DukeException
      */
     public String unmark(int index) throws DukeException{
         if (index > tasks.size() || index <= 0 ) {

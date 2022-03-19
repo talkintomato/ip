@@ -36,7 +36,7 @@ public class Event extends Task{
 
     public String getTime() {return this.time.toString();}
 
-    public String getFormattedTime() {return time.format(DateTimeFormatter.ofPattern("MMM d yyyy"));}
+    public String getFormattedTime() {return time.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));}
 
     /**
      * Constructor for Event when loaded by storage

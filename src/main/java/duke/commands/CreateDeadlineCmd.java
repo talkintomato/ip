@@ -13,7 +13,7 @@ public class CreateDeadlineCmd extends Command {
     public CreateDeadlineCmd(String[] cmdVar) throws DukeException {
         String[] deadlineDetails = cmdVar[1].split(" /by ", 2);
         if (deadlineDetails.length != 2) {
-            throw new DukeException("Invalid deadline input!");
+            throw new DukeException("Invalid deadline input! \ndeadline <description> /by <date in yyyy-mm-d>");
         }
         this.deadline = new Deadline(deadlineDetails[0], deadlineDetails[1]);
     }

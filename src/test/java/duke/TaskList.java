@@ -9,19 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class TaskListTest {
 
-//    @Test
-//    public void addTaskTest(){
-//        TaskList tasks = new TaskList();
-//        Todo todo = new Todo("false", "Dummy Description");
-//        tasks.addTask(todo);
-//        assertEquals(todo.getIsDone(), true);
-//    }
-//
-//    @Test
-//    public void removeListTest(){
-//
-//    }
-
 
     @Test
     public void markTest() {

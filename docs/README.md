@@ -46,7 +46,7 @@ Added: Finish book
 
 Example of usage:
 
-`event <description> /on <date in yyyy-mm-d>`
+`event <description> /at <date in yyyy-mm-d>`
 
 ```
 event Dinner party /on 2022-02-02 

@@ -33,7 +33,7 @@ public class Duke {
         } catch (DukeException e) {
             return "KRAW!! Kraw!! \n" + e.getMessage();
         } catch (Exception e) {
-            return "KRAW!! Kraw!! \n Invalid Input!! use <help> to see commands!" ;
+            return "KRAW!! Kraw!! \n Invalid Input!! use <help> to see commands!";
         }
     }
 
